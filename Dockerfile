@@ -12,7 +12,6 @@ COPY src/ src/
 
 RUN ./mvnw package -DskipTests
 
-
 # stage 2: run the application
 FROM eclipse-temurin:21-jre-jammy AS runtime
 
