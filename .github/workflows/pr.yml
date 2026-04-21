@@ -22,11 +22,7 @@ jobs:
               run: mvn clean package
             - name: perfom the code quality analysis
               uses: github/codeql-action/analyze@v3
-            - name: publish the test result 
-              uses: EnricoMi/publish-unit-test-result-action@v2    
-              with:
-                files: "**/target/surefire-reports/**/*.xml" 
-                comment_mode: always    
+         
     docker-build-job:
       runs-on: ubuntu-latest
       steps:
