@@ -16,6 +16,8 @@ jobs:
                 distribution: 'temurin'
             - name: initilize codeql
               uses: github/codeql-action/init@v3
+              with:
+                languages: java
             - name: package the code
               run: mvn clean package
             - name: code quality analysis
