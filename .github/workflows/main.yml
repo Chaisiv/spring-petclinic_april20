@@ -1,0 +1,42 @@
+name: production_branch 
+on:
+    workflow_dispatch:
+    push:
+        branches:
+            - main
+jobs:
+    maven-build-job:
+        runs-on: ubuntu-latest
+        steps:
+            - name: get the code 
+              uses: actions/checkout@v4
+            - name: steup java
+              uses: actions/setup-java@v3
+              with:
+                java-version: '17'
+                distribution: 'temurin'
+            - name: initlize codeql
+              uses: github/codeql-action/init@v3
+              with: 
+                langunage: java
+            - name: package the code
+              run: mvn clean package
+            - name: code quality analysis
+              uses: github/codeql-action/analyze@v3
+            - name: publish the test result 
+              uses: EnricoMi/publish-unit-test-result-action@v2
+              with:
+                file: "**/target/surefire-reports/**/*.xml"
+                comment_mode: always
+    docker-build-job:
+        runs-on: ubuntu-latest
+        steps:
+            - name: get the code
+              uses: actions/checkout@v4
+            - name: Set up Docker Buildx
+              uses: docker/setup-buildx-action@v4              
+            - name: Build and push
+              uses: docker/build-push-action@v7
+              with:
+                push: true
+                tags: "Chaisiv/spring-petclinic_april20:latest"
