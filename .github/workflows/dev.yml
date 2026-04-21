@@ -22,11 +22,11 @@ jobs:
               run: mvn clean package
             - name: code quality analysis
               uses: github/codeql-action/analyze@v3
-            - name: publish the test result
-              uses: EnricoMi/publish-unit-test-result-action@v2
+            - name: upload JAR as artifact
+              uses: actions/upload-artifact@v4
               with:
-                files: "**/target/surefire-reports/**/*.xml"
-                comment_mode: always
+                name: petclinic-jar
+                path: target/*.jar
     docker-build-jobs:
         runs-on: ubuntu-latest 
         steps:
