@@ -1,4 +1,4 @@
-name: dev_branch 
+name: dev_branch
 on:
     push:
         branches:
