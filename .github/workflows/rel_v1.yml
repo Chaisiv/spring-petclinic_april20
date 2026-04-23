@@ -66,8 +66,8 @@ jobs:
                 push: true
                 context: .
                 tags: |
-                  ghcr.io/${{ github.repository_owner }}/petclinic:latest
-                  ghcr.io/${{ github.repository_owner }}/petclinic:${{ github.sha }}
+                  ghcr.io/chaisiv/petclinic:latest
+                  ghcr.io/chaisiv/petclinic:${{ github.sha }}
 
                   
                            
