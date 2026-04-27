@@ -17,7 +17,7 @@ jobs:
               uses: actions/checkout@v4
             - name : setup java
               uses: actions/setup-java@v3
-              with:
+              with: 
                 java-version: '17'
                 distribution: 'temurin'
             - name: cache maven dependencies   
