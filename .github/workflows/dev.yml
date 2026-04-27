@@ -6,7 +6,7 @@ on:
 jobs:
     maven-build-job:
         runs-on: ubuntu-latest
-        steps:
+        steps: 
             - name: get the code
               uses: actions/checkout@v4
             - name : setup java
